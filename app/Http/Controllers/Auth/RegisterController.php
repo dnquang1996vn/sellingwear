@@ -52,10 +52,10 @@ class RegisterController extends Controller
         ];
 
         return Validator::make($data, [
-            'name' => 'required|string|min:3|max:255',
+            'name' => 'required|string|min:3|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed|regex:/^.*(?=.{3,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\d\X]).*$/',
-            'phone' =>  "numeric|digits_between:9,11",
+            'email_confirm' => 'required|same:email',
         ],  $messages);
     }
 

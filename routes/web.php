@@ -15,4 +15,5 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+Route::post('/validation','ValidationController@register');
 //Route::get('/home', 'HomeController@index')->name('home');

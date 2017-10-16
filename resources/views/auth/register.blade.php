@@ -8,21 +8,22 @@
                 <div class="auth-title panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" id = "register-form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Name (*)</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
+                                <span class="help-block" id="name-error">
+                                </span>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         @foreach ($errors->get('name') as $message)
-                                            <h5>
+                                            <ul>
                                                 {{$message}}
-                                            </h5>
+                                            </ul>
                                         @endforeach
                                     </span>
                                 @endif
@@ -30,35 +31,18 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail Address (*)</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
+                                <span class="help-block" id="email-error">
+                                </span>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         @foreach ($errors->get('email') as $message)
-                                            <h5>
+                                            <ul>
                                                 {{$message}}
-                                            </h5>
-                                        @endforeach
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        @foreach ($errors->get('password') as $message)
-                                            <h5>
-                                                {{$message}}
-                                            </h5>
+                                            </ul>
                                         @endforeach
                                     </span>
                                 @endif
@@ -66,11 +50,44 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="email-confirmation" class="col-md-4 control-label">Confirm email (*)</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="email-confirmation" type="email" class="form-control" name="email_confirmation" required>
+                                <span class="help-block" id="email-confirmation-error">
+                                </span>
                             </div>
+
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password (*)</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+                                <span class="help-block" id="password-error">
+                                </span>
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        @foreach ($errors->get('password') as $message)
+                                            <ul>
+                                                {{$message}}
+                                            </ul>
+                                        @endforeach
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirmation" class="col-md-4 control-label">Confirm Password (*)</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirmation" type="password" class="form-control" name="password_confirmation" required>
+                                <span class="help-block" id="password-confirmation-error">
+                                </span>
+                            </div>
+
                         </div>
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Gender</label>
@@ -88,14 +105,14 @@
                             <label for="adress" class="col-md-4 control-label">Adress</label>
 
                             <div class="col-md-6">
-                                <input id="adress" type="text" class="form-control" name="" value="{{ old('adress') }}"  autofocus>
+                                <input id="adress" type="text" class="form-control" name="adress" value="{{ old('adress') }}"  autofocus>
 
                                 @if ($errors->has('adress'))
                                     <span class="help-block">
                                         @foreach ($errors->get('adress') as $message)
-                                            <h5>
+                                            <ul>
                                                 {{$message}}
-                                            </h5>
+                                            </ul>
                                         @endforeach
                                     </span>
                                 @endif
@@ -118,7 +135,7 @@
                             <label for="phone" class="col-md-4 control-label">Phone</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}"  autofocus >
+                                <input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}"  autofocus >
 
                                 @if ($errors->has('phone')&& (old('phone') != null))
                                     <span class="help-block">
@@ -143,12 +160,5 @@
 </div>
 @endsection
 @section('js')
-<script>
-    $.datepicker.formatDate( "yy-mm-dd", new Date( 2007, 1 - 1, 26 ) );
-    $( function() {
-        $( "#birthday" ).datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-    } );
-</script>
+<script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection
