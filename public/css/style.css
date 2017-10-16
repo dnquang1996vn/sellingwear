@@ -1,0 +1,12 @@
+body {
+	background-color: white;
+}
+#header-top {
+	background-color: whitesmoke;
+}
+.auth-box{
+	background-color: whitesmoke;
+}
+.auth-box .auth-title{
+	background-color: #e2dbdb;
+}
