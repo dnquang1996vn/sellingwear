@@ -160,5 +160,5 @@
 </div>
 @endsection
 @section('js')
-<script src="{{ asset('js/auth/register.js') }}"></script>
+    <script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection

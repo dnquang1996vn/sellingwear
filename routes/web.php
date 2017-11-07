@@ -16,4 +16,10 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::post('/validation','ValidationController@register');
-//Route::get('/home', 'HomeController@index')->name('home');
+
+// product add, edit
+Route::middleware(['admin'])->prefix('admin')->group(function () {
+	Route::get('manage_product', 'ProductController@view')->name('manage_product');
+    Route::get('create_product', 'ProductController@create')->name('create_product');
+    Route::post('create_product', 'ProductController@store')->name('store_product');
+});
