@@ -15,9 +15,11 @@
                     @endif
 
                     @guest
-                    Welcome to highfashion website
+                        <h1 style="color: blue">
+                            Welcome to highfashion website
+                        </h1>
                     @else
-                    You are logged in!
+                        <h1 style="color: red">You are logged in!<h1>
                     @endguest
                 </div>
             </div>
