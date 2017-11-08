@@ -58,11 +58,23 @@
         </div>
         <div class="content-product-list">
             <div class="row">
+                @foreach ($products as $product)
                 <div class="col-md-4">
                     <div class="thumtnail product-item">
-                        <img src="">
+                        <img src="{{asset($product->feature_image)}}">
+                        <div class="caption">
+                            <h4><a href=""><center>{{$product->name}}</center></a>
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <h5 class="text-center">{{$product->description}}</h5>
+                                </div>
+                            </div>  
+                            <p></p>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
             
         </div>

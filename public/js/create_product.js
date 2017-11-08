@@ -1,5 +1,5 @@
 $(document).on('ready', function() {
-       function readURL(input) {
+    function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             
@@ -11,7 +11,7 @@ $(document).on('ready', function() {
         }
     }
     
-    $("#feature-image-input").change(function(){
+    $("#feature_image_input").change(function(){
         readURL(this);
     });
 })

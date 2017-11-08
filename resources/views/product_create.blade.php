@@ -1,12 +1,14 @@
 @extends('layouts.app')
-
+@section('css')
+    <link href="{{ asset('css/lib/dropzone.css') }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="col-md-12">
         <div class="auth-box panel panel-default">
                 <div class="auth-title panel-heading">Add product</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}">
+                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -66,8 +68,14 @@
 
                             <div class="col-md-6" style="margin-top: 8px">
                                 <span style="color: red" id = "image-error"></span>
-                                <input type="file" name="feature-image-input" id="feature-image-input">
+                                <input type="file" name="feature_image_input" id="feature_image_input">
                                 <img src="" id="feature-image-display" width="200px" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-md-4 control-label">Description Image</label>
+
+                            <div class="col-md-6" style="margin-top: 8px">
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
@@ -118,5 +126,9 @@
     </div>
 @endsection
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
     <script src="{{ asset('js/create_product.js') }}"></script>
+    <script type="text/javascript">
+        //var myDropzone = new Dropzone("div#myId", { url: "/file/post"});
+    </script>
 @endsection

@@ -23,3 +23,5 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('create_product', 'ProductController@create')->name('create_product');
     Route::post('create_product', 'ProductController@store')->name('store_product');
 });
+
+Route::get('demo', 'HomeController@demo');
