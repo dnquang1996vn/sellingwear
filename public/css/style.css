@@ -2,7 +2,29 @@ body {
 	background-color: white;
 }
 #header-top {
+	margin-bottom: 15px;
 	background-color: whitesmoke;
+	padding: 10px 40px;
+}
+#header-top #logo-web {
+	font-family: bold;
+	font-size: 30px;
+}
+#header-top #account-link {
+	font-size: 20px;
+}
+#main-container {
+	background-color: whitesmoke;
+}
+#main-container .sidebar {
+	padding: 20px;
+    border: solid 0.5px #e4d9d9; 
+}
+#main-container .main-content {
+	padding: 20px;
+}
+#main-container .main-content .add-product-btn {
+	float: right;
 }
 .auth-box{
 	background-color: whitesmoke;

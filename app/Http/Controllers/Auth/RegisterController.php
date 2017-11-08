@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'name' => 'required|string|min:3|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed|regex:/^.*(?=.{3,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\d\X]).*$/',
-            'email_confirm' => 'required|same:email',
+            'email_confirmation' => 'required|same:email',
         ],  $messages);
     }
 
