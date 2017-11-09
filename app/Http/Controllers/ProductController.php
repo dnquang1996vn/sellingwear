@@ -11,7 +11,7 @@ use Auth;
 
 class ProductController extends Controller
 {
-    public function view()
+    public function list()
     {  
         $products = Product::orderBy('id','asc')->get();
         return view('product_list')->with('products', $products);
@@ -36,6 +36,12 @@ class ProductController extends Controller
         $product->detail_information = $request->information;
         $product->feature_image = 'image/product_image/'.$imageName;
         $product->save();
-        return redirect()->route('product_list');
+        return redirect()->route('manage_product');
+    }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return view('product_view')->with('product', $product);
     }
 }

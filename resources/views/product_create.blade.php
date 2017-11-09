@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                            <label for="price" class="col-md-4 control-label">Price (VND)</label>
+                            <label for="price" class="col-md-4 control-label">Price (USD)</label>
 
                             <div class="col-md-6">
                                 <input id="price" type="number" class="form-control" name="price" value="{{ old('price') }}"  autofocus>

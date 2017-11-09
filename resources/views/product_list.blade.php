@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="row">
     <div class="sidebar col-md-3">
         <div id="category-heading">
             <h3 id="category-title">
@@ -53,24 +54,39 @@
         </div>
         <div class="category-list">
             <h3 class="category-name">
-                App
+                .
             </h3>
         </div>
         <div class="content-product-list">
             <div class="row">
                 @foreach ($products as $product)
                 <div class="col-md-4">
-                    <div class="thumtnail product-item">
-                        <img src="{{asset($product->feature_image)}}">
-                        <div class="caption">
-                            <h4><a href=""><center>{{$product->name}}</center></a>
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-6 col-lg-6">
-                                    <h5 class="text-center">{{$product->description}}</h5>
-                                </div>
-                            </div>  
-                            <p></p>
+                    <div class="box box-solid limit-p-width">
+                        <div class="box-body affiliate product-item">
+                            <div class="product-heading">
+                                <a href="{{route('view_product',$product->id)}}">
+                                    {{$product->name}}
+                                </a>
+                            </div>
+                            <a href="{{route('view_product',$product->id)}}">
+                                <img src="{{asset($product->feature_image)}}" class="img-responsive">
+                            </a>
+
+                            <div class="caption">
+                                <h3>{{$product->price}}$</h3>
+
+                                <p>{{$product->description}}</p>
+
+                                <p>
+                                    <a href="" class="btn btn-primary" role="button">
+                                        Preview
+                                    </a>
+                                    <a href="" class="btn btn-success" role="button">
+                                        Buy Now
+                                    </a>
+                                </p>
+                                <p><i class="fa fa-shopping-cart margin-r5"></i> 47+ purchases</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,4 +95,5 @@
             
         </div>
     </div>
+</div>
 @endsection

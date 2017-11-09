@@ -19,9 +19,9 @@ Route::post('/validation','ValidationController@register');
 
 // product add, edit
 Route::middleware(['admin'])->prefix('admin')->group(function () {
-	Route::get('manage_product', 'ProductController@view')->name('manage_product');
+    Route::get('manage_product', 'ProductController@list')->name('manage_product');
     Route::get('create_product', 'ProductController@create')->name('create_product');
     Route::post('create_product', 'ProductController@store')->name('store_product');
 });
 
-Route::get('demo', 'HomeController@demo');
+Route::get('product/{product_id}', 'ProductController@show')->name('view_product');

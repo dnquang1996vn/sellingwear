@@ -67,9 +67,7 @@
             </div>
         </nav>
         <div class="container" id="main-container">
-            <div class="row">
         @yield('content')
-            </div>
         </div>
     </div>
 
