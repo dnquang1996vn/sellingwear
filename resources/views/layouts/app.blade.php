@@ -13,10 +13,14 @@
     <!-- Styles -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base/ionicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base/AdminLTE.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base/skin-blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @yield('css')
 </head>
-<body>
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top" id="header-top">
             <div class="navbar-header">
@@ -71,6 +75,8 @@
         @yield('content')
             </div>
         </div>
+        @yield('sidebar')
+        @yield('main-content')
     </div>
 
     <!-- Scripts -->
@@ -78,6 +84,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="{{ asset('js/base/adminlte.js') }}"></script>
     @yield('js');
 </body>
 </html>

@@ -2,7 +2,7 @@ body {
 	background-color: white;
 }
 #header-top {
-	margin-bottom: 15px;
+	margin-bottom: 0px;
 	background-color: whitesmoke;
 	padding: 10px 40px;
 }
@@ -34,4 +34,7 @@ body {
 }
 .help-block {
 	color: #a94448;
+}
+.sidebar {
+	padding-top: 30px;
 }
