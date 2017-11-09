@@ -19,7 +19,7 @@
         <div class="row">
             <h1>Detail Imformation</h1>
             <div class="col-md-10 col-md-offset-1" style="text-align: justify;">
-                
+                {!!$product->detail_information!!}
             </div>
         </div>
 @endsection

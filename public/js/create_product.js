@@ -14,4 +14,10 @@ $(document).on('ready', function() {
     $("#feature_image_input").change(function(){
         readURL(this);
     });
-})
+
+    $('.summernote').summernote({
+
+           height: 300,
+
+      });
+});

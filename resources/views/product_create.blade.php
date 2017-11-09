@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('css')
     <link href="{{ asset('css/lib/dropzone.css') }}" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -8,6 +9,16 @@
                 <div class="auth-title panel-heading">Add product</div>
 
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                      <div class="alert alert-danger">
+                          Thông tin đăng ký không đầy đủ, bạn cần chỉnh sửa như sau:
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                    @endif
                     <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -99,7 +110,9 @@
                             <label for="information" class="col-md-4 control-label">Detail Information</label>
 
                             <div class="col-md-6">
-                                <input id="information" type="text" class="form-control" name="information" value="{{ old('information') }}"  autofocus>
+                                <textarea  id="information" class="form-control summernote" name="information" value="{{ old('information') }}"  autofocus>
+                                    
+                                </textarea>
 
                                 @if ($errors->has('information'))
                                     <span class="help-block">
@@ -127,6 +140,7 @@
 @endsection
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
     <script src="{{ asset('js/create_product.js') }}"></script>
     <script type="text/javascript">
         //var myDropzone = new Dropzone("div#myId", { url: "/file/post"});

@@ -48,9 +48,11 @@
     </div>
     <div class="main-content col-md-9">
         <div>
-            <a href="{{route('create_product')}}">
-                <button class="btn btn-primary add-product-btn">Add new product</button>
-            </a>
+            @if (Auth::user()->isAdmin())
+                <a href="{{route('create_product')}}">
+                    <button class="btn btn-primary add-product-btn">Add new product</button>
+                </a>
+            @endif
         </div>
         <div class="category-list">
             <h3 class="category-name">
