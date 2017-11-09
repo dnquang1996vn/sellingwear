@@ -61,4 +61,11 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('product_view')->with('product', $product);
     }
+
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('manage_product');
+    }
 }

@@ -48,7 +48,7 @@
     </div>
     <div class="main-content col-md-9">
         <div>
-            @if (Auth::user()->isAdmin())
+            @if (Auth::check()&&Auth::user()->isAdmin())
                 <a href="{{route('create_product')}}">
                     <button class="btn btn-primary add-product-btn">Add new product</button>
                 </a>
@@ -86,6 +86,13 @@
                                     <a href="" class="btn btn-success" role="button">
                                         Buy Now
                                     </a>
+                                </p>
+                                <p>
+                                    @if (Auth::check()&&Auth::user()->isAdmin())
+                                        <a href="{{route('delete_product',$product->id)}}" class="btn btn-danger" role="button">
+                                            Delete
+                                        </a>
+                                    @endif
                                 </p>
                                 <p><i class="fa fa-shopping-cart margin-r5"></i> 47+ purchases</p>
                             </div>

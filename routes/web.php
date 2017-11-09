@@ -22,6 +22,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('manage_product', 'ProductController@list')->name('manage_product');
     Route::get('create_product', 'ProductController@create')->name('create_product');
     Route::post('create_product', 'ProductController@store')->name('store_product');
+    Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
 });
 
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
