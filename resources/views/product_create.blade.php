@@ -111,7 +111,7 @@
 
                             <div class="col-md-6">
                                 <textarea  id="information" class="form-control summernote" name="information" value="{{ old('information') }}"  autofocus>
-                                    
+
                                 </textarea>
 
                                 @if ($errors->has('information'))
@@ -124,7 +124,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>                           
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -135,7 +135,7 @@
                         </div>
                     </form>
                 </div>
-            </div>      
+            </div>
     </div>
 @endsection
 @section('js')
