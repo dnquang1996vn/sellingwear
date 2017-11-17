@@ -9,7 +9,7 @@
 
 .main-nav-wrap > ul {
     list-style: none;
-    margin: 5px 0 0;
+    margin:   0;
     position: absolute;
     background: #fff;
     border: 1px solid #e1e1e1;
@@ -161,7 +161,6 @@ li {
 #home-main{
     float: right;
     display: table;
-    margin-top: 4px;
     border-radius: 0 4px 4px 0;
     overflow: hidden;
     border-bottom: 0;
