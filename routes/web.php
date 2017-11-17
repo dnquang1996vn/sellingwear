@@ -26,3 +26,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
 });
 
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
+
+Route::get('/demo', function () {
+    return view('demo');
+});

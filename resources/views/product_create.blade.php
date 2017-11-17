@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('css')
-    <link href="{{ asset('css/lib/dropzone.css') }}" rel="stylesheet">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -11,14 +11,15 @@
                 <div class="panel-body">
                     @if (count($errors) > 0)
                       <div class="alert alert-danger">
-                          Thông tin đăng ký không đầy đủ, bạn cần chỉnh sửa như sau:
-                          <ul>
-                              @foreach ($errors->all() as $error)
-                                  <li>{{ $error }}</li>
-                              @endforeach
-                          </ul>
+                            Input is not corret
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                       </div>
                     @endif
+                    <form id="file-upload" class="dropzone"></form>
                     <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -87,6 +88,9 @@
                             <label for="" class="col-md-4 control-label">Description Image</label>
 
                             <div class="col-md-6" style="margin-top: 8px">
+                                <div id="dZUpload" class="dropzone">
+                                    <div class="dz-default dz-message"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
@@ -141,8 +145,6 @@
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-    <script src="{{ asset('js/create_product.js') }}"></script>
-    <script type="text/javascript">
-        //var myDropzone = new Dropzone("div#myId", { url: "/file/post"});
-    </script>
+    <script src="{{ asset('js/create_product/display_upload_image.js') }}"></script>
+    <script src="{{ asset('js/create_product/dropzone.js') }}"></script>
 @endsection
