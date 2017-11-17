@@ -167,17 +167,17 @@
     left: 0;
     top: 9px;" class="ico ico-cart"></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text -->
                     <span style="    color: #4a4a4a;
-    background: #fdd835;
-    height: 20px;
-    border-radius: 2px;
-    display: inline-block;
-    text-align: center;
-    line-height: 20px;
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 12px;
-    padding: 0 6px;
-    font-weight: 700;" class="cart-count">0</span>
+                background: #fdd835;
+                height: 20px;
+                border-radius: 2px;
+                display: inline-block;
+                text-align: center;
+                line-height: 20px;
+                margin-left: 4px;
+                margin-right: 4px;
+                font-size: 12px;
+                padding: 0 6px;
+                font-weight: 700;" class="cart-count">0</span>
                 </a>
             </div>
         </div>
