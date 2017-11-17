@@ -48,7 +48,7 @@
     </div>
     <div class="main-content col-md-9">
         <div>
-            @if (Auth::user()->isAdmin())
+            @if ( Auth::check() && Auth::user()->isAdmin())
                 <a href="{{route('create_product')}}">
                     <button class="btn btn-primary add-product-btn">Add new product</button>
                 </a>

@@ -19,5 +19,5 @@ $(document).on('ready', function() {
 
            height: 300,
 
-      });
+    });
 });
