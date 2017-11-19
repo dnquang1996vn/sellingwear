@@ -2,7 +2,42 @@ body {
 	background-color: white;
 }
 #header-top {
+	margin-bottom: 15px;
 	background-color: whitesmoke;
+	padding: 10px 40px;
+}
+#header-top #logo-web {
+	font-family: bold;
+	font-size: 30px;
+}
+#header-top #account-link {
+	font-size: 20px;
+}
+#main-container {
+	background-color: whitesmoke;
+}
+#main-container .sidebar {
+	padding: 20px;
+    border: solid 0.5px #e4d9d9; 
+}
+#main-container .main-content {
+	padding: 20px;
+}
+#main-container .main-content .add-product-btn {
+	float: right;
+}
+.content-product-list .product-item {
+    border: 1px solid #e5dada;
+    box-shadow: 1px 1px 5px grey;
+    padding: 10px;
+    margin-top: 15px;
+}
+.content-product-list .product-heading {
+	color: blue;
+	font-size: 30px;
+}
+.product-image-box {
+	border-right: 1px solid;
 }
 .auth-box{
 	background-color: whitesmoke;
