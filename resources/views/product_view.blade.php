@@ -1,35 +1,8 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{ asset('css/content/productList.css') }}" rel="stylesheet">
+@endsection
 @section('content')
-<style>
-    table#chi-tiet {
-        width: 610px !important;
-    }
-
-
-
-    .row {
-        display: table;
-    }
-
-    .product-summary {
-        background: #fff;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        border-radius: 0 0 4px 4px;
-    }
-
-    .product-image {
-        width: 527px;
-        border-right: 2px solid #f7f7f7;
-        padding: 24px 24px 20px 20px;
-    }
-
-    .product-cart {
-        width: 711px !important;
-        padding: 0 24px;
-    }
-</style>
 <div class="row product-summary">
     <div class="product-image">
         <div class="col-md-6 " style="text-align: center; width: 387px; height: 387px">
