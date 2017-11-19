@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,6 @@ class User extends Authenticatable
     ];
 
     public function isAdmin() {
-       return $this->level == 1;
+       return (Auth::check() &&($this->level == 1));
     }
 }
