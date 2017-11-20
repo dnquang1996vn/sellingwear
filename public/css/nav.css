@@ -1,0 +1,7 @@
+nav .form-search{
+    width: 570px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    float: left;
+}

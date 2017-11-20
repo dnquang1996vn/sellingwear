@@ -21,6 +21,8 @@ Route::post('/validation','ValidationController@register');
 Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('manage_product', 'ProductController@list')->name('manage_product');
     Route::get('create_product', 'ProductController@create')->name('create_product');
+    Route::post('create_product/upload_image', 'ImageController@create')->name('upload_image_product');
+    Route::post('create_product/delete_image', 'ImageController@delete')->name('delete_image_product');
     Route::post('create_product', 'ProductController@store')->name('store_product');
     Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
 });

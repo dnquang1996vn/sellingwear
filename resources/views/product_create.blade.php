@@ -19,7 +19,9 @@
                             </ul>
                       </div>
                     @endif
-                    <form id="file-upload" class="dropzone"></form>
+                    <form id="file-upload" class="dropzone">
+                        {{ csrf_field() }}
+                    </form>
                     <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -115,7 +117,6 @@
 
                             <div class="col-md-6">
                                 <textarea  id="information" class="form-control summernote" name="information" value="{{ old('information') }}"  autofocus>
-
                                 </textarea>
 
                                 @if ($errors->has('information'))
@@ -132,7 +133,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submitBtn" type="submit" class="btn btn-primary">
                                     Register
                                 </button>
                             </div>
