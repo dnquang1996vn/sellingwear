@@ -7,94 +7,18 @@
 <div class="row">
     <div class="main-nav-wrap">
         <ul>
+        <h2>Category list</h2>
+            @foreach ($categories as $category)
             <li>
-                <a href="" class="">
+                <a href="{{route('view_category', $category->id)}}">
                     <i class="ico ico-book"></i>
-                    <span>Sách, VPP &amp; Quà Tặng</span>
+                    <span>{{$category->name}}</span>
                 </a>
             </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-bottle"></i>
-                    <span>Mẹ &amp; Bé</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-sprayer"></i>
-                    <span>Hàng Tiêu Dùng - Thực Phẩm</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-lipsticks"></i>
-                    <span>Làm Đẹp - Sức Khỏe</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-tshirt"></i>
-                    <span>Thời trang - Phụ kiện</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-pan"></i>
-                    <span>Nhà Cửa Đời Sống</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-electronic"></i>
-                    <span>Điện Gia Dụng - Điện Lạnh</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-tv"></i>
-                    <span>Tivi - Thiết bị nghe nhìn</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-cellphone"></i>
-                    <span>Điện Thoại - Máy Tính Bảng</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-camera"></i>
-                    <span>Máy Ảnh - Quay Phim</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-headphone"></i>
-                    <span>Phụ Kiện - Thiết Bị Số</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-laptop"></i>
-                    <span>Laptop - Thiết bị IT</span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="">
-                    <i class="ico ico-sport"></i>
-                    <span>Thể Thao - Dã Ngoại</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="" class="no-sub">
-                    <i class="ico ico-hot"></i>
-                    <span>Khuyến Mãi HOT</span>
-                </a>
-            </li>
+            @endforeach
         </ul>
     </div>
-
+    @include('modal.category')
     <div id="home-main" class="main-content col-md-9">
         <div>
             @isAdmin
@@ -159,4 +83,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/list_product/category.js') }}"></script>
 @endsection

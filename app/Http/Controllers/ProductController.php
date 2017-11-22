@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\User;
+use App\Model\User;
 use App\Model\Product;
+use App\Model\Category;
 use Auth;
 use Validator;
 use App\Http\Requests\CreateProductRequest;
@@ -15,14 +16,16 @@ class ProductController extends Controller
 {
     public function list()
     {  
+        $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
-        return view('product_list')->with('products', $products);
+        return view('product_list')->with('products', $products)->with('categories', $categories);
     }
 
     public function create($id=null)
     {   
+        $categories = Category::all();
         $product = Product::find($id);
-        return view('product_create')->with('product', $product);
+        return view('product_create')->with('product', $product)->with('categories', $categories);
     }
 
     public function store(CreateProductRequest $request, $id=null)
@@ -37,6 +40,7 @@ class ProductController extends Controller
             $product = new Product;
             }
             $product->name = $request->name;
+            $product->category_id = $request->category;
             $product->label = $request->label;
             $product->price = $request->price;
             $product->description = $request->description;

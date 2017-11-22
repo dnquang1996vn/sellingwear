@@ -19,14 +19,19 @@ Route::post('/validation','ValidationController@register');
 
 // product add, edit
 Route::middleware(['admin'])->prefix('admin')->group(function () {
-    Route::get('manage_product', 'ProductController@list')->name('manage_product');
-    Route::get('create_product/{product_id?}', 'ProductController@create')->name('create_product');
-    Route::post('create_product/{product_id?}', 'ProductController@store')->name('store_product');
-    Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
+    Route::prefix('product')->group(function () {
+        Route::get('manage_product', 'ProductController@list')->name('manage_product');
+        Route::get('create_product/{product_id?}', 'ProductController@create')->name('create_product');
+        Route::post('create_product/{product_id?}', 'ProductController@store')->name('store_product');
+        Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
+    });
+    Route::prefix('category')->group(function () {
+    	Route::get('show', 'CategoryController@show')->name('show_category');
+    	Route::post('create', 'CategoryController@create')->name('create_category');
+    	Route::get('delete/{id}', 'CategoryController@delete')->name('delete_category');
+    });
 });
-
+Route::get('view_category/{id}', 'CategoryController@view')->name('view_category');
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
 
-Route::get('/demo', function () {
-    return view('demo');
-});
+Route::get('/demo','HomeController@demo');

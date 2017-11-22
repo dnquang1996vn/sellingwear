@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Model\User;
 use App\Model\Product;
+use App\Model\Category;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,9 @@ class HomeController extends Controller
 
     public function demo()
     {
-        return view('demo');
+        $c = new Category;
+        $c->id = 1;
+        $c->save();
+        dd($c);
     }
 }
