@@ -19,15 +19,14 @@
                             </ul>
                       </div>
                     @endif
-                    <form id="file-upload" class="dropzone"></form>
-                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product', $product->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $product ? $product->name : old('name') }}" required autofocus>
                                 <span class="help-block" id="name-error">
                                 </span>
                                 @if ($errors->has('name'))
@@ -45,7 +44,7 @@
                             <label for="label" class="col-md-4 control-label">Lable</label>
 
                             <div class="col-md-6">
-                                <input id="label" type="text" class="form-control" name="label" value="{{ old('label') }}"  autofocus>
+                                <input id="label" type="text" class="form-control" name="label" value="{{ $product ? $product->label : old('label') }}"  autofocus>
 
                                 @if ($errors->has('label'))
                                     <span class="help-block">
@@ -62,7 +61,7 @@
                             <label for="price" class="col-md-4 control-label">Price (USD)</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" class="form-control" name="price" value="{{ old('price') }}"  autofocus>
+                                <input id="price" type="number" class="form-control" name="price" value="{{ $product ? $product->price : old('price') }}"  autofocus>
 
                                 @if ($errors->has('price'))
                                     <span class="help-block">
@@ -81,10 +80,10 @@
                             <div class="col-md-6" style="margin-top: 8px">
                                 <span style="color: red" id = "image-error"></span>
                                 <input type="file" name="feature_image_input" id="feature_image_input">
-                                <img src="" id="feature-image-display" width="200px" />
+                                <img src="{{asset($product->feature_image)}}" id="feature-image-display" width="200px" />
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="" class="col-md-4 control-label">Description Image</label>
 
                             <div class="col-md-6" style="margin-top: 8px">
@@ -92,12 +91,14 @@
                                     <div class="dz-default dz-message"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <textarea  id="description" type="text" class="form-control" name="description" value="{{ old('description') }}"  autofocus></textarea>
+                                <textarea  id="description" type="text" class="form-control" name="description" autofocus>
+                                    {{ $product ? $product->description : old('description') }}
+                                </textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -114,8 +115,8 @@
                             <label for="information" class="col-md-4 control-label">Detail Information</label>
 
                             <div class="col-md-6">
-                                <textarea  id="information" class="form-control summernote" name="information" value="{{ old('information') }}"  autofocus>
-
+                                <textarea  id="information" class="form-control summernote" name="information" autofocus>
+                                    {{ $product ? $product->detail_information : old('information') }}
                                 </textarea>
 
                                 @if ($errors->has('information'))

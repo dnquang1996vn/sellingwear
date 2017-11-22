@@ -97,11 +97,11 @@
 
     <div id="home-main" class="main-content col-md-9">
         <div>
-            @if (Auth::check()&&Auth::user()->isAdmin())
+            @isAdmin
             <a href="{{route('create_product')}}">
                 <button class="btn btn-primary add-product-btn">Add new product</button>
             </a>
-            @endif
+            @endisAdmin
         </div>
         <div class="category-list">
             <h3 class="category-name">
@@ -137,12 +137,16 @@
                                     </a>
                                 </p>
                                 <p>
-                                    @if (Auth::check()&&Auth::user()->isAdmin())
-                                    <a href="{{route('delete_product',$product->id)}}" class="btn btn-danger"
+                                    @isAdmin
+                                    <a href="{{route('create_product', $product->id)}}" class="btn btn-info"
+                                       role="button">
+                                        Update
+                                    </a>
+                                    <a href="{{route('delete_product', $product->id)}}" class="btn btn-danger"
                                        role="button">
                                         Delete
                                     </a>
-                                    @endif
+                                    @endisAdmin
                                 </p>
                                 <p><i class="fa fa-shopping-cart margin-r5"></i> 47+ purchases</p>
                             </div>

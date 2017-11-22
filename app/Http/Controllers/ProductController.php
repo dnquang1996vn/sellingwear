@@ -9,6 +9,7 @@ use App\User;
 use App\Model\Product;
 use Auth;
 use Validator;
+use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -18,32 +19,23 @@ class ProductController extends Controller
         return view('product_list')->with('products', $products);
     }
 
-    public function create()
-    {
-        return view('product_create');
+    public function create($id=null)
+    {   
+        $product = Product::find($id);
+        return view('product_create')->with('product', $product);
     }
 
-    public function store(Request $request)
+    public function store(CreateProductRequest $request, $id=null)
     {
-        $messages = [
-        ];
-        $validator = Validator::make($request->all(), [
-            'name'     => 'required|max:255',
-            'label'     => 'required|max:255',
-            'price'     => 'required',
-            'description'     => 'required|max:255',
-            'information'    => 'required',
-        ], $messages);
-        if ($validator->fails()) {
-            return redirect()->route('create_product')
-                    ->withErrors($validator)
-                    ->withInput();
-        } else {
             $image = $request->file('feature_image_input');
             $imageName = time().$image->getClientOriginalName();
             $image->move(public_path('image/product_image'),$imageName);
 
+            if ($id) {
+                $product = Product::find($id);
+            } else {
             $product = new Product;
+            }
             $product->name = $request->name;
             $product->label = $request->label;
             $product->price = $request->price;
@@ -52,8 +44,6 @@ class ProductController extends Controller
             $product->feature_image = 'image/product_image/'.$imageName;
             $product->save();
             return redirect()->route('manage_product');
-        }
-        
     }
 
     public function show($id)
