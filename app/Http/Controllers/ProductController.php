@@ -22,7 +22,6 @@ class ProductController extends Controller
     public function create($id=null)
     {   
         $product = Product::find($id);
-        echo ("abc");
         return view('product_create')->with('product', $product);
     }
 
