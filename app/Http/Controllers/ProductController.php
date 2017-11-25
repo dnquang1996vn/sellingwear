@@ -16,6 +16,7 @@ class ProductController extends Controller
 {
     public function list()
     {  
+
         $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
         return view('product_list')->with('products', $products)->with('categories', $categories);
@@ -35,18 +36,11 @@ class ProductController extends Controller
             $image->move(public_path('image/product_image'),$imageName);
 
             if ($id) {
-                $product = Product::find($id);
+                $product = Product::updatesave($request->all(), $imageName, $id);
             } else {
-            $product = new Product;
+                $product = Product::store($request->all(), $imageName);
             }
-            $product->name = $request->name;
-            $product->category_id = $request->category;
-            $product->label = $request->label;
-            $product->price = $request->price;
-            $product->description = $request->description;
-            $product->detail_information = $request->information;
-            $product->feature_image = 'image/product_image/'.$imageName;
-            $product->save();
+           
             return redirect()->route('manage_product');
     }
 

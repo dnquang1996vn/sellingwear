@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <select name="category" id="">
                                     @foreach ($categories as $category)
-                                        @if ($category->id == $product->category_id)
+                                        @if (($product)&&($category->id == $product->category_id))
                                         <option value="{{$category->id}}" selected>
                                             {{$category->name}}
                                         </option>

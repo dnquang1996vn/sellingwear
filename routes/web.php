@@ -34,4 +34,6 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
 Route::get('view_category/{id}', 'CategoryController@view')->name('view_category');
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
 
-Route::get('/demo','HomeController@demo');
+Route::get('/demo', function(){
+    return view('demo');
+});
