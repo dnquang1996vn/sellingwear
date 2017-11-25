@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\User;
+use App\Model\User;
 use App\Model\Product;
+use App\Model\Category;
 use Auth;
 use Validator;
 use App\Http\Requests\CreateProductRequest;
@@ -15,14 +16,17 @@ class ProductController extends Controller
 {
     public function list()
     {  
+
+        $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
-        return view('product_list')->with('products', $products);
+        return view('product_list')->with('products', $products)->with('categories', $categories);
     }
 
     public function create($id=null)
     {   
+        $categories = Category::all();
         $product = Product::find($id);
-        return view('product_create')->with('product', $product);
+        return view('product_create')->with('product', $product)->with('categories', $categories);
     }
 
     public function store(CreateProductRequest $request, $id=null)
@@ -32,17 +36,11 @@ class ProductController extends Controller
             $image->move(public_path('image/product_image'),$imageName);
 
             if ($id) {
-                $product = Product::find($id);
+                $product = Product::updatesave($request->all(), $imageName, $id);
             } else {
-            $product = new Product;
+                $product = Product::store($request->all(), $imageName);
             }
-            $product->name = $request->name;
-            $product->label = $request->label;
-            $product->price = $request->price;
-            $product->description = $request->description;
-            $product->detail_information = $request->information;
-            $product->feature_image = 'image/product_image/'.$imageName;
-            $product->save();
+           
             return redirect()->route('manage_product');
     }
 

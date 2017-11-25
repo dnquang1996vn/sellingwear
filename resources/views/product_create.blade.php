@@ -19,7 +19,7 @@
                             </ul>
                       </div>
                     @endif
-                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product', $product->id) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product', $product ? $product->id : null) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -38,6 +38,24 @@
                                         @endforeach
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category" class="col-md-4 control-label">Category</label>
+                            <div class="col-md-6">
+                                <select name="category" id="">
+                                    @foreach ($categories as $category)
+                                        @if (($product)&&($category->id == $product->category_id))
+                                        <option value="{{$category->id}}" selected>
+                                            {{$category->name}}
+                                        </option>
+                                        @else
+                                        <option value="{{$category->id}}">
+                                            {{$category->name}}
+                                        </option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('label') ? ' has-error' : '' }}">
@@ -80,7 +98,11 @@
                             <div class="col-md-6" style="margin-top: 8px">
                                 <span style="color: red" id = "image-error"></span>
                                 <input type="file" name="feature_image_input" id="feature_image_input">
+                                @if ($product)
                                 <img src="{{asset($product->feature_image)}}" id="feature-image-display" width="200px" />
+                                @else
+                                <img src="" id="feature-image-display" width="200px" />
+                                @endif
                             </div>
                         </div>
                         <!-- <div class="form-group">

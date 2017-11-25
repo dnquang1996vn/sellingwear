@@ -210,6 +210,7 @@
                         <li>
                             @if (Auth::user()->isAdmin())
                             <a href="{{route('manage_product')}}">Manage Product</a>
+                            <a href="{{route('show_category')}}">Manage Category</a>
                             @endif
                         </li>
                         <li>

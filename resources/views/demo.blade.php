@@ -1,65 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
-    <title>Upload Multiple Images using dropzone.js and Laravel</title>
-    <meta name="csrf-token" id = "csrf-token" content="{{ csrf_token() }}">
-    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
-    <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>HighFashion</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/nav.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Upload Multiple Images using dropzone.js and Laravel</h1>
-            <button id = "add">add image</button>
-            <form action="/load" method = "post" file = "true" enctype="maltipart/form-data" class="dropzone" id = "image-upload" style="display: none">
-             {{ csrf_field() }}
-            <input type="hidden" name="quang" value="1">
-            </form>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    var fileList = new Array;
-    var i =0;
-    $("#add").click(function(){
-        $(this).siblings("form").show();
-    });
-    Dropzone.options.imageUpload = {
-        maxFilesize         :       1,
-        acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        addRemoveLinks: true,  
-
-       
-        init: function() {
-            this.on("success", function(file, serverFileName) {
-                file.serverFileName = serverFileName;
-                file.id = "fuck";
-                console.log(file.id);
-                console.log(file.serverFileName);
-            });
-            
-            this.on("removedfile", function(file) {
-                console.log(file.serverFileName);
-                $.ajax({
-                    type: 'POST',
-                    url: 'upload/delete',
-                    data: {id: file.serverFileName},
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    dataType: 'html',
-                    success: function(data){
-                    }
-                });
-            });
-        }
-    };
-</script>
-
+    
 </body>
-</html>
