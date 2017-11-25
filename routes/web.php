@@ -26,9 +26,9 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
     });
     Route::prefix('category')->group(function () {
-    	Route::get('show', 'CategoryController@show')->name('show_category');
-    	Route::post('create', 'CategoryController@create')->name('create_category');
-    	Route::get('delete/{id}', 'CategoryController@delete')->name('delete_category');
+        Route::get('show', 'CategoryController@show')->name('show_category');
+        Route::post('create', 'CategoryController@create')->name('create_category');
+        Route::get('delete/{id}', 'CategoryController@delete')->name('delete_category');
     });
 });
 Route::get('view_category/{id}', 'CategoryController@view')->name('view_category');
