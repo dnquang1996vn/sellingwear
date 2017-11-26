@@ -41,3 +41,7 @@ Route::get('/demo', function(){
 Route::get('/demo2', function(){
     return view('demo.product');
 });
+
+Route::get('/demo3', function(){
+    return view('demo.order');
+});
