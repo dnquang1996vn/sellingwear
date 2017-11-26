@@ -37,7 +37,13 @@ Route::get('view_category/{id}', 'CategoryController@view')->name('view_category
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
 
 Route::get('/demo', function(){
-    return view('demo');
+    return view('body');
+});
+Route::get('/product-detail', function(){
+    return view('demo.product');
 });
 
-Route::get('showCart', 'Order\CartController@showCart')->name('show_cart');
+Route::get('/order', function(){
+    return view('demo.order');
+});
+
