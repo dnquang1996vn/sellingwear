@@ -19,7 +19,7 @@
                             </ul>
                       </div>
                     @endif
-                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product', $product ? $product->id : null) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ $product ? route('update_product', $product->id) : route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -102,6 +102,16 @@
                                 <img src="{{asset($product->feature_image)}}" id="feature-image-display" width="200px" />
                                 @else
                                 <img src="" id="feature-image-display" width="200px" />
+                                @endif
+
+                                @if ($errors->has('feature_image_input'))
+                                    <span class="help-block">
+                                        @foreach ($errors->get('feature_image_input') as $message)
+                                            <ul>
+                                                {{$message}}
+                                            </ul>
+                                        @endforeach
+                                    </span>
                                 @endif
                             </div>
                         </div>

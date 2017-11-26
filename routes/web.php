@@ -22,7 +22,9 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('manage_product', 'ProductController@list')->name('manage_product');
         Route::get('create_product/{product_id?}', 'ProductController@create')->name('create_product');
-        Route::post('create_dirproduct/{product_id?}', 'ProductController@store')->name('store_product');
+
+        Route::post('create_product', 'ProductController@store')->name('store_product');
+        Route::post('update_product/{product_id}', 'ProductController@update')->name('update_product');
         Route::get('delete_product/{product_id}', 'ProductController@delete')->name('delete_product');
     });
     Route::prefix('category')->group(function () {
@@ -37,3 +39,5 @@ Route::get('product/{product_id}', 'ProductController@show')->name('view_product
 Route::get('/demo', function(){
     return view('demo');
 });
+
+Route::get('showCart', 'Order\CartController@showCart')->name('show_cart');
