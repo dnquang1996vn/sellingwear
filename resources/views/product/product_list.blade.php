@@ -18,7 +18,6 @@
             @endforeach
         </ul>
     </div>
-    @include('modal.category')
     <div id="home-main" class="main-content col-md-9">
         <div>
             @isAdmin

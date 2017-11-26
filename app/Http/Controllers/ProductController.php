@@ -19,7 +19,7 @@ class ProductController extends Controller
     {  
         $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
-        return View::make('list')
+        return view('product.product_list')
             ->with(['products'   => $products, 'categories' => $categories]);
     }
 
