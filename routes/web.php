@@ -38,10 +38,10 @@ Route::get('product/{product_id}', 'ProductController@show')->name('view_product
 Route::get('/demo', function(){
     return view('body');
 });
-Route::get('/demo2', function(){
+Route::get('/product-detail', function(){
     return view('demo.product');
 });
 
-Route::get('/demo3', function(){
+Route::get('/order', function(){
     return view('demo.order');
 });
