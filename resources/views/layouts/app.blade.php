@@ -13,6 +13,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body>
@@ -106,7 +107,7 @@
                 font-weight: 400;
                 text-transform: none;
                 line-height: 1;
-                -webkit-font-smoothing: antialiased;" class="ico ico-order-tracking"></i>
+                -webkit-font-smoothing: antialiased;" class=""></i>
                 Theo dõi<br>đơn hàng
             </a>
 
@@ -136,7 +137,7 @@
             border: 1px solid #189eff;
             font-weight: 300;
             width: 21px;
-            height: 21px;" class="number-notification user"></span><i class="ico ico-ic-notifications"></i>
+            height: 21px;" class="number-notification user"></span><i class=""></i>
                         <!-- react-text: 4 -->Thông báo<!-- /react-text --><br><!-- react-text: 6 -->của tôi
                         <!-- /react-text --></div>
 
@@ -165,7 +166,7 @@
     position: absolute;font-size: 22px;
     float: left;
     left: 0;
-    top: 9px;" class="ico ico-cart"></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text -->
+    top: 9px;" class=""></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text -->
                     <span style="    color: #4a4a4a;
                 background: #fdd835;
                 height: 20px;
@@ -234,7 +235,7 @@
         @yield('content')
     </div>
 </div>
-
+@yield('body')
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
