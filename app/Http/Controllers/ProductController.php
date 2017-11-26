@@ -16,7 +16,6 @@ class ProductController extends Controller
 {
     public function list()
     {  
-
         $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
         return view('product_list')->with('products', $products)->with('categories', $categories);
