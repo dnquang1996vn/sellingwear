@@ -10,6 +10,7 @@ use App\Model\Product;
 use App\Model\Category;
 use Auth;
 use Validator;
+use View;
 use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
@@ -18,14 +19,15 @@ class ProductController extends Controller
     {  
         $categories = Category::all();
         $products = Product::orderBy('id','asc')->get();
-        return view('product_list')->with('products', $products)->with('categories', $categories);
+        return View::make('list')
+            ->with(['products'   => $products, 'categories' => $categories]);
     }
 
     public function create($id=null)
     {   
         $categories = Category::all();
         $product = Product::find($id);
-        return view('product_create')->with('product', $product)->with('categories', $categories);
+        return view('product.product_create')->with('product', $product)->with('categories', $categories);
     }
 
     public function store(CreateProductRequest $request, $id=null)
@@ -46,7 +48,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('product_view')->with('product', $product);
+        return view('product.product_view')->with('product', $product);
     }
 
     public function delete($id)
