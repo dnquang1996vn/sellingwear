@@ -25,8 +25,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-    	$category = Category::find($id);
-    	$category->delete();
+    	$category = Category::destroy($id);
     	return redirect()->route('show_category');
     }
 

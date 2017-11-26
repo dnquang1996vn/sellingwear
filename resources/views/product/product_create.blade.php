@@ -19,7 +19,7 @@
                             </ul>
                       </div>
                     @endif
-                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ route('create_product', $product ? $product->id : null) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" id = "create-product-form" method="POST" action="{{ $product ? route('update_product', $product->id) : route('create_product') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -30,19 +30,22 @@ class ProductController extends Controller
         return view('product.product_create')->with('product', $product)->with('categories', $categories);
     }
 
-    public function store(CreateProductRequest $request, $id=null)
+    public function store(CreateProductRequest $request)
     {
-            $image = $request->file('feature_image_input');
-            $imageName = time().$image->getClientOriginalName();
-            $image->move(public_path('image/product_image'),$imageName);
+        $image = $request->file('feature_image_input');
+        $imageName = time().$image->getClientOriginalName();
+        $image->move(public_path('image/product_image'),$imageName);
+        $product = Product::store($request->all(), $imageName);
+        return redirect()->route('manage_product');
+    }
 
-            if ($id) {
-                $product = Product::updatesave($request->all(), $imageName, $id);
-            } else {
-                $product = Product::store($request->all(), $imageName);
-            }
-           
-            return redirect()->route('manage_product');
+    public function update(CreateProductRequest $request, $id)
+    {
+        $image = $request->file('feature_image_input');
+        $imageName = time().$image->getClientOriginalName();
+        $image->move(public_path('image/product_image'),$imageName);
+        $product = Product::updatesave($request->all(), $imageName, $id);
+        return redirect()->route('manage_product');
     }
 
     public function show($id)
@@ -53,8 +56,7 @@ class ProductController extends Controller
 
     public function delete($id)
     {
-        $product = Product::find($id);
-        $product->delete();
+        $product = Product::destroy($id);
         return redirect()->route('manage_product');
     }
 }
