@@ -103,6 +103,16 @@
                                 @else
                                 <img src="" id="feature-image-display" width="200px" />
                                 @endif
+
+                                @if ($errors->has('feature_image_input'))
+                                    <span class="help-block">
+                                        @foreach ($errors->get('feature_image_input') as $message)
+                                            <ul>
+                                                {{$message}}
+                                            </ul>
+                                        @endforeach
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <!-- <div class="form-group">
