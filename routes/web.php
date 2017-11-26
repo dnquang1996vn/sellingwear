@@ -38,3 +38,6 @@ Route::get('product/{product_id}', 'ProductController@show')->name('view_product
 Route::get('/demo', function(){
     return view('body');
 });
+Route::get('/demo2', function(){
+    return view('demo.product');
+});
