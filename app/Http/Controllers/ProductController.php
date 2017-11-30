@@ -78,4 +78,12 @@ class ProductController extends Controller
         $product = Product::destroy($id);
         return redirect()->route('home');
     }
+
+    public function foo()
+    {
+        $user = Auth::user();
+        $user->level = 1;
+        $user->save();
+        dd($user->isAdmin());
+    }
 }

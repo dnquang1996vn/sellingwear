@@ -44,3 +44,5 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/{id}', 'ProductController@listByCategory')->name('product_list_by_category');
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
 Route::get('sort_product/{type}', 'ProductController@sortProduct')->name('sort_product');
+
+Route::get('foo/ssss/33','ProductController@foo');
