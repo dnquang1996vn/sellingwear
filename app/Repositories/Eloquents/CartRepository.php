@@ -4,13 +4,22 @@ namespace App\Repositories\Eloquents;
 use App\Model\Product;
 use App\Model\Cart;
 use App\Model\User;
+use Auth;
 
 class CartRepository
 {
-    public function store($params)
+    public function add($params)
     {
-        $category = new Category;
-        $category->name = $params['name'];
-        $category->save();
+        $cart = new Cart;
+        $cart->user_id = $params['user_id'];
+        $cart->product_id = $params['product_id'];
+        $cart->save();
+        return $cart;
+    }
+
+    public function show()
+    {
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        return $carts;
     }
 }

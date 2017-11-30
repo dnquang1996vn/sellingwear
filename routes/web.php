@@ -34,8 +34,11 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
 });
 
 // cart
-Route::middleware(['guest'])->group(function() {
+Route::middleware(['auth'])->group(function() {
     Route::post('add_cart', 'CartController@add')->name('add_cart');
+    Route::get('show_cart', 'CartController@show')->name('show_cart');
+    Route::get('delete_cart/{id}', 'CartController@destroy')->name('delete_cart');
+    Route::get('order_cart/{id}', 'CartController@order')->name('order_cart');
 });
 
 Route::get('/{id}', 'ProductController@listByCategory')->name('product_list_by_category');

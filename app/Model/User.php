@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function carts()
     {
-        return $this->hasMany('App\Model\Carts');
+        return $this->hasMany('App\Model\Cart');
     }
 
     public function isAdmin() {

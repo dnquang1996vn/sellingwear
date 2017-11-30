@@ -63,11 +63,16 @@
                                         <div class="add-cart-action" style="display: block">
                                             <div class="quantity-box">
                                                 <div class="cta-box">
-                                                    <button class="add-to-cart  js-add-to-cart is-css" type="button">
+                                                    <form action="{{route('add_cart')}}" method="post">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="user_id" value="{{Auth::check() ? Auth::user()->id : null}}">
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                        <button class="add-to-cart  js-add-to-cart is-css" type="submit">
                                                         <span class="text">
                                                             Add to cart
                                                         </span>
                                                     </button>
+                                                    </form>
                                                     <br><br>
                                                     @isAdmin
                                                         <button class="btn btn-primary">

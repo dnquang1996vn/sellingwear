@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Blade;
 use Schema;
 use View;
 use App\Model\Category;
+use App\Model\User;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {

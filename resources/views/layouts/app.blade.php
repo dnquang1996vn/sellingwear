@@ -84,7 +84,9 @@
                 </div>
             </form>
         </div>
-
+        
+        @guest
+        @else
         <div class="header-link" style="    float: left;position: relative;">
             <div id="header-cart" style="display: inline-block">
                 <a style="border: 2px solid #fff;
@@ -101,7 +103,7 @@
             line-height: 14px;
             display: inline-block;
             letter-spacing: .9px;
-            margin-left: 25px;" data-reactroot="" rel="nofollow" href="" class="header-cart item">
+            margin-left: 25px;" data-reactroot="" rel="nofollow" href="{{route('show_cart')}}" class="header-cart item">
                     <i style="    font-size: 18px;
     left: 8px;
     top: 9px;
@@ -120,10 +122,11 @@
                 margin-right: 4px;
                 font-size: 12px;
                 padding: 0 6px;
-                font-weight: 700;" class="cart-count">0</span>
+                font-weight: 700;" class="cart-count"></span>
                 </a>
             </div>
         </div>
+        @endguest
 
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
