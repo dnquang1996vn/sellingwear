@@ -26,15 +26,16 @@
                            <a href="{{route('view_product', $cart->product->id)}}" target="_blank">{{$cart->product->name}}</a>
                         </p>
                         <p class="action">
-                           <form action=""></form>
-                            <a href="">
-                                
+                            <a href="{{route('order_cart', $cart->id)}}" class="btn btn-success">
+                                <button class="btn btn-success">
+                                  Order
+                                </button>
                             </a>
-                                <a href="{{route('delete_cart', $cart->id)}}" class="btn btn-danger">
-                                    <button class="btn btn-danger">
-                                           Cancel
-                                    </button>
-                                </a>
+                            <a href="{{route('delete_cart', $cart->id)}}" class="btn btn-danger">
+                                <button class="btn btn-danger">
+                                       Cancel
+                                </button>
+                            </a>
                         </p>
                      </div>
                      <div class="box-price">

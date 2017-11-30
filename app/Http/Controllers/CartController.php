@@ -30,6 +30,11 @@ class CartController extends Controller
     	return view('cart.showcart')->with('carts', $carts);
     }
 
+    public function order($id)
+    {
+    	return view('cart.order2');
+    }
+
     public function destroy($id)
     {
         Cart::destroy($id);
