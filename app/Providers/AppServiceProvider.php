@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Schema;
 use View;
-use App\Model\Category;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('isAdmin', function () {
             return auth()->check() && auth()->user()->isAdmin();
         });
-        // $categories = Category::all();
-        // View::share('categories', $categories);
     }
 
     /**

@@ -22,25 +22,31 @@ class ProductController extends Controller
 
     public function list()
     {  
+        $categories = Category::all();
         $products = $this->productRepository->list();
         return view('product.product_list')
-            ->with(['products'   => $products]);
+            ->with(['products'   => $products,
+                    'categories' => $categories]);
     }
 
     public function listByCategory($id)
     {
+        $categories = Category::all();
         $kind = Category::find($id);
         $products = $this->productRepository->listByCategory($id);
         return view('product.product_by_category')
             ->with(['products'   => $products,
-                    'kind'   => $kind]);
+                    'kind'   => $kind,
+                    'categories' => $categories]);
     }
 
     public function sortProduct($type)
     {
+        $categories = Category::all();
         $products = $this->productRepository->sort_product($type);
         return view('product.product_list')
-            ->with(['products'   => $products]);
+            ->with(['products'   => $products,
+                    'categories' => $categories]);
     }
 
     public function create($id=null)
