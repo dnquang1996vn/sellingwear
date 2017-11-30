@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('isAdmin', function () {
             return auth()->check() && auth()->user()->isAdmin();
         });
-        $categories = Category::all();
-        View::share('categories', $categories);
+        // $categories = Category::all();
+        // View::share('categories', $categories);
     }
 
     /**
