@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function carts()
+    {
+        return $this->hasMany('App\Model\Carts');
+    }
+
     public function isAdmin() {
        return (Auth::check() &&($this->level == 1));
     }

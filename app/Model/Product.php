@@ -11,39 +11,14 @@ class Product extends Model
         return $this->hasMany('App\Model\Image');
     }
 
+    public function carts()
+    {
+        return $this->hasMany('App\Model\Cart');
+    }
+
     public function category()
     {
         return $this->belongsTo('App\Model\Category');
     }
 
-    public static function store($params, $imageName)
-    {
-        $product = new Product();
-        // save here
-        $product->name = $params['name'];
-        $product->category_id = $params['category'];
-        $product->label = $params['label'];
-        $product->price = $params['price'];
-        $product->description = $params['description'];
-        $product->detail_information = $params['information'];
-        $product->feature_image = 'image/product_image/'.$imageName;
-        $product->save();
-        
-        return $product;
-    }
-
-    public static function updatesave($params, $imageName, $id)
-    {
-        $product = Product::find($id);
-        // save here
-        $product->name = $params['name'];
-        $product->category_id = $params['category'];
-        $product->label = $params['label'];
-        $product->price = $params['price'];
-        $product->description = $params['description'];
-        $product->detail_information = $params['information'];
-        $product->feature_image = 'image/product_image/'.$imageName;
-        $product->save();
-        return $product;
-    }
 }

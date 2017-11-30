@@ -41,39 +41,19 @@
                 </div>
             </div>
         </div>
+
         <div class="product-listing">
             <div class="product-box no-mg">
                 <div class="filter-list-box">
                     <h1>
-                        All Product                    
+                        {{$kind->name}}:                     
                     </h1>
+                    <h4 name="results-count"> {{$kind->products()->count()}} results</h4>
                 </div>
             </div>
             <div class="product-box no-mg">
                 <div class="option-box-wrap">
                     <div class="option-box">
-                        <div class="sort-box-holder">
-                            <div class="btn-group pull-left sort-box">
-                                <span>Priority view: </span>
-                                <ul class="sort-list">
-                                    <li class="" data-order="newest">
-                                        <a href="{{route('sort_product', 1)}}">New</a>
-                                    </li>
-                                    <li class="" data-order="top_seller">
-                                        <a href="{{route('sort_product', 2)}}">Old</a>
-                                    </li>
-                                    <li class="" data-order="discount_percent,desc">
-                                        <a href="{{route('sort_product', 3)}}">Cheap</a>
-                                    </li>
-                                    <li class="" data-order="price,asc">
-                                        <a href="{{route('sort_product', 4)}}">Expensive </a>
-                                    </li>
-                                    <li class="active" data-order="position">
-                                        <a href="javascript:void(0);">Selected</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="product-box-list" data-impress-list-title="Category | Sách kinh tế">
@@ -94,7 +74,6 @@
                                     <span class="sale-tag sale-tag-square">
                                         {{$product->price}} USD
                                     </span>
-                                    <br>
                                 </p>
                             </a>
                             @isAdmin
@@ -106,7 +85,6 @@
                                     <a href="{{route('delete_product', $product->id)}}" style="color: white">Delete</a>
                                 </button>
                             @endisAdmin
-                                
                         </div>
                     @endforeach
                 </div>

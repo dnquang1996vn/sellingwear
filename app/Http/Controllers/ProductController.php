@@ -10,8 +10,6 @@ use Auth;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -24,35 +22,43 @@ class ProductController extends Controller
 
     public function list()
     {  
-        $categories = Category::all();
         $products = $this->productRepository->list();
         return view('product.product_list')
-            ->with(['products'   => $products, 'categories' => $categories]);
+            ->with(['products'   => $products]);
+    }
+
+    public function listByCategory($id)
+    {
+        $kind = Category::find($id);
+        $products = $this->productRepository->listByCategory($id);
+        return view('product.product_by_category')
+            ->with(['products'   => $products,
+                    'kind'   => $kind]);
+    }
+
+    public function sortProduct($type)
+    {
+        $products = $this->productRepository->sort_product($type);
+        return view('product.product_list')
+            ->with(['products'   => $products]);
     }
 
     public function create($id=null)
     {   
-        $categories = Category::all();
         $product = $this->productRepository->find($id);
-        return view('product.product_create')->with('product', $product)->with('categories', $categories);
+        return view('product.product_create')->with('product', $product);
     }
 
     public function store(CreateProductRequest $request)
     {
-        $image = $request->file('feature_image_input');
-        $imageName = time().$image->getClientOriginalName();
-        $image->move(public_path('image/product_image'),$imageName);
-        $product = Product::store($request->all(), $imageName);
-        return redirect()->route('manage_product');
+        $product = $this->productRepository->store($request->all());
+        return redirect()->route('view_product', $product->id);
     }
 
     public function update(UpdateProductRequest $request, $id)
     {
-        $image = $request->file('feature_image_input');
-        $imageName = time().$image->getClientOriginalName();
-        $image->move(public_path('image/product_image'),$imageName);
-        $product = Product::updatesave($request->all(), $imageName, $id);
-        return redirect()->route('manage_product');
+        $product = $this->productRepository->update($request->all(), $id);
+        return redirect()->route('view_product', $product->id);
     }
 
     public function show($id)
@@ -64,6 +70,6 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::destroy($id);
-        return redirect()->route('manage_product');
+        return redirect()->route('home');
     }
 }

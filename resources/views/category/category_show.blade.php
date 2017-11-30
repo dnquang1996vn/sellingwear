@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('css')
     <link href="{{ asset('css/content/categoryList.css') }}" rel="stylesheet">
 @endsection

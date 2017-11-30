@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ProductController@list');
+Route::get('/', 'ProductController@list')->name('home');
 
 Auth::routes();
 
@@ -32,16 +32,12 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     	Route::get('delete/{id}', 'CategoryController@delete')->name('delete_category');
     });
 });
-Route::get('view_category/{id}', 'CategoryController@view')->name('view_category');
+
+// cart
+Route::middleware(['guest'])->group(function() {
+    Route::post('add_cart', 'CartController@add')->name('add_cart');
+});
+
+Route::get('/{id}', 'ProductController@listByCategory')->name('product_list_by_category');
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
-
-Route::get('/demo', function(){
-    return view('body');
-});
-Route::get('/product-detail', function(){
-    return view('demo.product');
-});
-
-Route::get('/order', function(){
-    return view('demo.order');
-});
+Route::get('sort_product/{type}', 'ProductController@sortProduct')->name('sort_product');

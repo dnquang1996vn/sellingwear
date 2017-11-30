@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/nav.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body>
@@ -87,62 +86,6 @@
         </div>
 
         <div class="header-link" style="    float: left;position: relative;">
-            <a rel="nofollow" href="" style="color: #fff;
-            font-size: 12px;
-            padding: 6px 0 0 30px;
-            position: relative;
-            vertical-align: top;
-            font-weight: 400;
-            line-height: 14px;
-            display: inline-block;
-            letter-spacing: .9px;
-            margin-left: 25px;" title="Kiểm tra trạng thái Đơn hàng của bạn" class="tracking-order item">
-                <i style="font-size: 22px;
-                float: left;
-                position: absolute;
-                left: 0;
-                top: 9px;font-family: icomoon!important;
-                font-style: normal;
-                font-weight: 400;
-                text-transform: none;
-                line-height: 1;
-                -webkit-font-smoothing: antialiased;" class=""></i>
-                Theo dõi<br>đơn hàng
-            </a>
-
-            <div style=" padding-left: 34px;color: #fff;
-            font-size: 12px;
-            padding: 6px 0 0 30px;
-            position: relative;
-            vertical-align: top;
-            font-weight: 400;
-            line-height: 14px;
-            display: inline-block;
-            letter-spacing: .9px;
-            margin-left: 25px;cursor: pointer;" class="noti-item tracking-noti item" id="header-noti">
-                <div data-reactroot="">
-                    <div><span style="font-size: 10px;
-            float: left;
-            position: absolute;
-            left: 9px;
-            top: -2px;
-            display: block;
-            background: #ff5353;
-            border-radius: 50%;
-            -webkit-border-radius: 50%;
-            padding: 3px;
-            text-align: center;
-            z-index: 2;
-            border: 1px solid #189eff;
-            font-weight: 300;
-            width: 21px;
-            height: 21px;" class="number-notification user"></span><i class=""></i>
-                        <!-- react-text: 4 -->Thông báo<!-- /react-text --><br><!-- react-text: 6 -->của tôi
-                        <!-- /react-text --></div>
-
-                </div>
-            </div>
-
             <div id="header-cart" style="display: inline-block">
                 <a style="border: 2px solid #fff;
             border-radius: 4px;
@@ -209,7 +152,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             @if (Auth::user()->isAdmin())
-                            <a href="{{route('manage_product')}}">Manage Product</a>
+                            <a href="{{route('create_product')}}">Add new Product</a>
                             <a href="{{route('show_category')}}">Manage Category</a>
                             @endif
                         </li>

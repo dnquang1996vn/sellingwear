@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Model\Category;
 use App\Model\Product;
+use App\Repositories\Eloquents\CategoryRepository;
 
 class CategoryController extends Controller
 {
+    protected $categoryRepository;
+
+    public function __construct(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function create(CategoryRequest $request)
     {   
-        $category = new Category;
-        $category->name = $request->name;
-        $category->save();
+        $this->categoryRepository->store($request->all());
         return redirect()->route('show_category');
     }
 
@@ -27,12 +33,5 @@ class CategoryController extends Controller
     {
         $category = Category::destroy($id);
         return redirect()->route('show_category');
-    }
-
-    public function view($id)
-    {
-        $categories = Category::all();
-        $products = Product::orderBy('id','asc')->where('category_id', $id)->get();
-        return view('product.product_list')->with('products', $products)->with('categories', $categories);
     }
 }

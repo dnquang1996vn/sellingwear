@@ -14,10 +14,7 @@
                     <div class="magiczoom  ">
                         <a class="zoom-wrap-link">
                             <div style="height:387px;width:387px;" class="zoomWrapper">
-                                <div style="height:387px;width:387px;" class="zoomWrapper"><img id="product-magiczoom"
-                                                                                                src="https://vcdn.tikicdn.com/cache/550x550/media/catalog/product/1/_/1.u4939.d20170729.t150616.198478.jpg"
-                                                                                                data-zoom-image="https://vcdn.tikicdn.com/cache/w1200/media/catalog/product/1/_/1.u4939.d20170729.t150616.198478.jpg"
-                                                                                                style="position: absolute;">
+                                <div style="height:387px;width:387px;" class="zoomWrapper"><img id="product-magiczoom">
                                 </div>
                             </div>
                         </a>
@@ -33,23 +30,17 @@
                             <div class="product-feature-images vertical"><span class="thumb-item"><span class="flx"><img
                                                 alt="Product"
                                                 src="https://vcdn.tikicdn.com/cache/75x75/media/catalog/product/1/_/1.u4939.d20170729.t150616.198478.jpg"></span></span><span
-                                        class="thumb-item"><span class="flx"><img alt="Product"
-                                                                                  src="https://vcdn.tikicdn.com/cache/75x75/media/catalog/product/2/_/2.u4939.d20170729.t150616.247357.jpg"></span></span>
+                                        class="thumb-item"><span class="flx"><img alt="Product">
                             </div>
                             <div class="product-reivew-images"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
             <div class="product-cart">
                 <div class="item-box">
                     <h1 class="item-name" itemprop="name" id="product-name">
                         Điện Thoại Nokia 8 - Hàng Chính Hãng </h1>
-
-
                     <div class="product-brand-block">
 
                         <div class="item-row1 brand-block">
@@ -60,27 +51,6 @@
                                              itemtype="http://schema.org/AggregateRating">
                                             <meta itemprop="ratingValue" content="4.8">
                                             <meta itemprop="ratingCount" content="8">
-                                        </div>
-                                        <div class="item-rating">
-                                            <p class="rating">
-                                                                                                    <span class="rating-box">
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <i class="star"></i>
-                                                        <span style="width:95%">
-                                                            <i class="star"></i>
-                                                            <i class="star"></i>
-                                                            <i class="star"></i>
-                                                            <i class="star"></i>
-                                                            <i class="star"></i>
-                                                        </span>
-                                                    </span>
-                                                <a id="reiews-url" class="review-url"
-                                                   href="dien-thoai-nokia-8-hang-chinh-hang-p756522/nhan-xet">(Xem 8
-                                                    đánh giá)</a>
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
