@@ -30,7 +30,8 @@
             position: relative;
             z-index: 1;
             float: left;">
-            <form id="search_form" action="" method="get">
+            <form id="search_form" action="{{route('search_product')}}" method="post">
+                {{ csrf_field() }}
                 <div class="search-wrap" style="
                 display: table;
                 vertical-align: middle;
@@ -79,7 +80,7 @@
                                     <span style="color: #4a4a4a;font-size: 14px;cursor: pointer;
                 font-weight: 500;-webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                 box-sizing: border-box; ">Tìm kiếm</span></button>
+                 box-sizing: border-box; ">Search</span></button>
 
                 </div>
             </form>
@@ -110,7 +111,7 @@
     position: absolute;font-size: 22px;
     float: left;
     left: 0;
-    top: 9px;" class=""></i><!-- react-text: 3 -->Giỏ hàng<!-- /react-text -->
+    top: 9px;" class=""></i><!-- react-text: 3 -->Cart<!-- /react-text -->
                     <span style="    color: #4a4a4a;
                 background: #fdd835;
                 height: 20px;

@@ -22,4 +22,14 @@ class CartRepository
         $carts = Cart::where('user_id', Auth::user()->id)->get();
         return $carts;
     }
+
+    public function change_address($params)
+    {
+        $user = Auth::user();
+        $user->name = $params['name'];
+        $user->adress = $params['adress'];
+        $user->phone = $params['phone'];
+        $user->save();
+        return $user;
+    }
 }

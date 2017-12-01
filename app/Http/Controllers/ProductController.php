@@ -72,4 +72,12 @@ class ProductController extends Controller
         $product = Product::destroy($id);
         return redirect()->route('home');
     }
+
+    public function search(Request $request)
+    {   
+        $products = $this->productRepository->search($request->all());
+        $key = $request->q;
+        return view('product.product_search')->with(['products' => $products,
+                                                    'key' => $key]);
+    }
 }

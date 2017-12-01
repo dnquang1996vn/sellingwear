@@ -39,8 +39,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('show_cart', 'CartController@show')->name('show_cart');
     Route::get('delete_cart/{id}', 'CartController@destroy')->name('delete_cart');
     Route::get('order_cart/{id}', 'CartController@order')->name('order_cart');
+    Route::post('change_address', 'CartController@change_address')->name('change_address');
+    Route::get('create_payment/{cart_id}', 'PaymentController@create')->name('create_payment');
 });
 
 Route::get('/{id}', 'ProductController@listByCategory')->name('product_list_by_category');
 Route::get('product/{product_id}', 'ProductController@show')->name('view_product');
+Route::post('search_product', 'ProductController@search')->name('search_product');
 Route::get('sort_product/{type}', 'ProductController@sortProduct')->name('sort_product');

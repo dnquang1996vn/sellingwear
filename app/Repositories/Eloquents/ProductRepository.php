@@ -90,6 +90,11 @@ class ProductRepository implements ProductRepositoryInterface
         return $product;
     }
 
+    public function search($params)
+    {
+        return Product::where('name', 'LIKE', $params['q'])->get();
+    }
+
     public function updateImage($image)
     {
         $path = Storage::putFileAs('feature_image', $image, time());
