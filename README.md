@@ -20,5 +20,6 @@
 	step 4:
 	- composer install
 	- php artisan key:generate
+	- php artisan migrate
 	- sudo chmod 777 storage
 	- php artisan serve
